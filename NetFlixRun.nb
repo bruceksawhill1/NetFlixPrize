@@ -1,0 +1,1318 @@
+(* Content-type: application/mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 6.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       145,          7]
+NotebookDataLength[     50566,       1309]
+NotebookOptionsPosition[     47908,       1217]
+NotebookOutlinePosition[     48287,       1234]
+CellTagsIndexPosition[     48244,       1231]
+WindowFrame->Normal
+ContainsDynamic->False*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["The Data", "Section",
+ CellChangeTimes->{{3.4370718142373962`*^9, 3.437071816213584*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{"SetDirectory", "[", 
+  "\"\</Users/brucesawhill/Desktop/NetFlixPrize/NetFlixMmaFiles/BulkStats\>\"\
+", "]"}], "\[IndentingNewLine]", 
+ RowBox[{"FileNames", "[", "]"}]}], "Input",
+ CellChangeTimes->{{3.412524726845488*^9, 3.412524740818673*^9}, {
+   3.412791467457164*^9, 3.4127914740918913`*^9}, {3.4291018271249237`*^9, 
+   3.4291018790354557`*^9}, {3.42910337421599*^9, 3.4291034188328953`*^9}, {
+   3.4305039816314487`*^9, 3.430504017949456*^9}, {3.430505581221689*^9, 
+   3.4305055842066193`*^9}, {3.436148399341873*^9, 3.436148527718094*^9}, {
+   3.4369122554044323`*^9, 3.4369123211666927`*^9}, 3.436912370372388*^9, {
+   3.437071775540518*^9, 3.4370717957961683`*^9}, 3.437071896280184*^9}],
+
+Cell[BoxData["\<\"/Users/brucesawhill/Desktop/NetFlixPrize/NetFlixMmaFiles/\
+BulkStats\"\>"], "Output",
+ CellChangeTimes->{3.43707380902943*^9, 3.4378320249392567`*^9, 
+  3.437862428695415*^9, 3.437876223281085*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"\<\"avgdist\"\>", ",", "\<\"avgdistpers\"\>", 
+   ",", "\<\"avgvector\"\>", ",", "\<\"avgvectorpers\"\>", 
+   ",", "\<\"citpts\"\>", ",", "\<\"citpts15\"\>", ",", "\<\"citpts4\"\>", 
+   ",", "\<\"citpts5\"\>", ",", "\<\"cumreviewplot\"\>", 
+   ",", "\<\".DS_Store\"\>", ",", "\<\"fitmavens\"\>", 
+   ",", "\<\"grandaveragebyperson\"\>", ",", "\<\"grandaveragebyreview\"\>", 
+   ",", "\<\"mavenmatrix\"\>", ",", "\<\"mavenmoviematrix225\"\>", 
+   ",", "\<\"mavens\"\>", ",", "\<\"mavens225\"\>", ",", "\<\"meanmatrix\"\>",
+    ",", "\<\"mrplot\"\>", ",", "\<\"personalmavs1\"\>", 
+   ",", "\<\"personalmavs10\"\>", ",", "\<\"personalmavs15\"\>", 
+   ",", "\<\"personalmavs5\"\>", ",", "\<\"personalmavslt5\"\>", 
+   ",", "\<\"personalstdev\"\>", ",", "\<\"plotrevbyscorebyperson\"\>", 
+   ",", "\<\"popplot\"\>", ",", "\<\"revbyscorebyperson\"\>", 
+   ",", "\<\"revbyscorebypersonfit\"\>", ",", "\<\"reviews\"\>", 
+   ",", "\<\"reviewspers\"\>", ",", "\<\"seculardrift\"\>", 
+   ",", "\<\"testfastknesset\"\>", ",", "\<\"thousandknesset\"\>", 
+   ",", "\<\"thousandmean\"\>", ",", "\<\"thousandvariance\"\>", 
+   ",", "\<\"variancematrix\"\>"}], "}"}]], "Output",
+ CellChangeTimes->{3.43707380902943*^9, 3.4378320249392567`*^9, 
+  3.437862428695415*^9, 3.437876223287572*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"reviews", "=", 
+   RowBox[{"<<", "reviews"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"Print", "[", 
+  RowBox[{"\"\<Dim[reviews] = \>\"", ",", 
+   RowBox[{"Dimensions", "[", "reviews", "]"}]}], 
+  "]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"reviewspers", "=", 
+   RowBox[{"<<", "reviewspers"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"Print", "[", 
+  RowBox[{"\"\<Dim[reviewspers] = \>\"", ",", 
+   RowBox[{"Dimensions", "[", "reviewspers", "]"}]}], 
+  "]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"avgvector", "=", 
+   RowBox[{"<<", "avgvector"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"Print", "[", 
+  RowBox[{"\"\<Dim[avgvector] = \>\"", ",", 
+   RowBox[{"Dimensions", "[", "avgvector", "]"}]}], 
+  "]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"avgvectorpers", "=", 
+   RowBox[{"<<", "avgvectorpers"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"Print", "[", 
+  RowBox[{"\"\<Dim[avgvectorpers] = \>\"", ",", 
+   RowBox[{"Dimensions", "[", "avgvectorpers", "]"}]}], 
+  "]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"personalstdev", "=", 
+   RowBox[{"<<", "personalstdev"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"Print", "[", 
+  RowBox[{"\"\<Dim[personalstdev] = \>\"", ",", 
+   RowBox[{"Dimensions", "[", "personalstdev", "]"}]}], 
+  "]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"avgdist", "=", 
+   RowBox[{"<<", "avgdist"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"Print", "[", 
+  RowBox[{"\"\<Dim[avgdist] = \>\"", ",", 
+   RowBox[{"Dimensions", "[", "avgdist", "]"}]}], 
+  "]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"avgdistpers", "=", 
+   RowBox[{"<<", "avgdistpers"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"Print", "[", 
+  RowBox[{"\"\<Dim[avgdistpers] = \>\"", ",", 
+   RowBox[{"Dimensions", "[", "avgdistpers", "]"}]}], 
+  "]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"mavens", "=", 
+   RowBox[{"<<", "mavens"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"Print", "[", 
+  RowBox[{"\"\<Dim[mavens] = \>\"", ",", 
+   RowBox[{"Dimensions", "[", "mavens", "]"}]}], 
+  "]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"mavens225", "=", 
+   RowBox[{"<<", "mavens225"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"Print", "[", 
+  RowBox[{"\"\<Dim[mavens225] = \>\"", ",", 
+   RowBox[{"Dimensions", "[", "mavens225", "]"}]}], 
+  "]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"mavenmoviematrix225", "=", 
+   RowBox[{"<<", "mavenmoviematrix225"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"Print", "[", 
+  RowBox[{"\"\<Dim[mavenmoviematrix225] = \>\"", ",", 
+   RowBox[{"Dimensions", "[", "mavenmoviematrix225", "]"}]}], "]"}]}], "Input",\
+
+ CellChangeTimes->{{3.412524726845488*^9, 3.412524740818673*^9}, {
+   3.412791467457164*^9, 3.4127914740918913`*^9}, {3.4291018271249237`*^9, 
+   3.4291018790354557`*^9}, {3.42910337421599*^9, 3.4291034188328953`*^9}, {
+   3.4305039816314487`*^9, 3.430504017949456*^9}, {3.430505581221689*^9, 
+   3.4305055842066193`*^9}, {3.436148399341873*^9, 3.436148527718094*^9}, {
+   3.4369122554044323`*^9, 3.4369123211666927`*^9}, 3.436912370372388*^9, {
+   3.437071775540518*^9, 3.4370717957961683`*^9}, 3.437071896280184*^9}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Dim[reviews] = \"\>", "\[InvisibleSpace]", 
+   RowBox[{"{", "17770", "}"}]}],
+  SequenceForm["Dim[reviews] = ", {17770}],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.437073814586681*^9, 3.4378624311113243`*^9, 
+  3.437876230289521*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Dim[reviewspers] = \"\>", "\[InvisibleSpace]", 
+   RowBox[{"{", 
+    RowBox[{"480183", ",", "2"}], "}"}]}],
+  SequenceForm["Dim[reviewspers] = ", {480183, 2}],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.437073814586681*^9, 3.4378624311113243`*^9, 
+  3.437876232316032*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Dim[avgvector] = \"\>", "\[InvisibleSpace]", 
+   RowBox[{"{", "17770", "}"}]}],
+  SequenceForm["Dim[avgvector] = ", {17770}],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.437073814586681*^9, 3.4378624311113243`*^9, 
+  3.437876232414907*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Dim[avgvectorpers] = \"\>", "\[InvisibleSpace]", 
+   RowBox[{"{", "480183", "}"}]}],
+  SequenceForm["Dim[avgvectorpers] = ", {480183}],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.437073814586681*^9, 3.4378624311113243`*^9, 
+  3.437876234401252*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Dim[personalstdev] = \"\>", "\[InvisibleSpace]", 
+   RowBox[{"{", "480183", "}"}]}],
+  SequenceForm["Dim[personalstdev] = ", {480183}],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.437073814586681*^9, 3.4378624311113243`*^9, 
+  3.4378762363547153`*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Dim[avgdist] = \"\>", "\[InvisibleSpace]", 
+   RowBox[{"{", 
+    RowBox[{"17770", ",", "5"}], "}"}]}],
+  SequenceForm["Dim[avgdist] = ", {17770, 5}],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.437073814586681*^9, 3.4378624311113243`*^9, 
+  3.4378762365227013`*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Dim[avgdistpers] = \"\>", "\[InvisibleSpace]", 
+   RowBox[{"{", 
+    RowBox[{"480183", ",", "5"}], "}"}]}],
+  SequenceForm["Dim[avgdistpers] = ", {480183, 5}],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.437073814586681*^9, 3.4378624311113243`*^9, 
+  3.43787623997392*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Dim[mavens] = \"\>", "\[InvisibleSpace]", 
+   RowBox[{"{", 
+    RowBox[{"3571", ",", "2"}], "}"}]}],
+  SequenceForm["Dim[mavens] = ", {3571, 2}],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.437073814586681*^9, 3.4378624311113243`*^9, 
+  3.437876240254593*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Dim[mavens225] = \"\>", "\[InvisibleSpace]", 
+   RowBox[{"{", "225", "}"}]}],
+  SequenceForm["Dim[mavens225] = ", {225}],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.437073814586681*^9, 3.4378624311113243`*^9, 
+  3.437876240310143*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Dim[mavenmoviematrix225] = \"\>", "\[InvisibleSpace]", 
+   RowBox[{"{", 
+    RowBox[{"225", ",", "17770"}], "}"}]}],
+  SequenceForm["Dim[mavenmoviematrix225] = ", {225, 17770}],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.437073814586681*^9, 3.4378624311113243`*^9, 
+  3.4378762446710176`*^9}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{"SetDirectory", "[", 
+  "\"\</Users/brucesawhill/Desktop/NetFlixPrize/NetFlixMmaFiles\>\"", 
+  "]"}], "\[IndentingNewLine]", 
+ RowBox[{"FileNames", "[", "]"}]}], "Input",
+ CellChangeTimes->{{3.4125243383255167`*^9, 3.412524341063004*^9}, {
+  3.412948547490449*^9, 3.412948551390932*^9}}],
+
+Cell[BoxData["\<\"/Users/brucesawhill/Desktop/NetFlixPrize/NetFlixMmaFiles\"\>\
+"], "Output",
+ CellChangeTimes->{3.437073832604629*^9, 3.4378624820894833`*^9, 
+  3.437876248746406*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"\<\"BulkStats\"\>", ",", "\<\".DS_Store\"\>", 
+   ",", "\<\"PeopleByMovies\"\>", ",", "\<\"peopleids\"\>", 
+   ",", "\<\"probe\"\>", ",", "\<\"probescores\"\>", 
+   ",", "\<\"probesorted\"\>", ",", "\<\"probesortsample\"\>", 
+   ",", "\<\"pss2\"\>", ",", "\<\"synqual\"\>", ",", "\<\"TestFolder\"\>", 
+   ",", "\<\"titles\"\>", ",", "\<\"TrainingMma\"\>"}], "}"}]], "Output",
+ CellChangeTimes->{3.437073832604629*^9, 3.4378624820894833`*^9, 
+  3.437876248761333*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", 
+   RowBox[{
+    RowBox[{"synqual", "=", 
+     RowBox[{"<<", "synqual"}]}], ";", "\[IndentingNewLine]", 
+    RowBox[{"Print", "[", 
+     RowBox[{"\"\<Dim[synqual] = \>\"", ",", " ", 
+      RowBox[{"Dimensions", "[", "synqual", "]"}]}], "]"}]}], "*)"}], 
+  "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"probe", "=", 
+     RowBox[{"<<", "probe"}]}], ";"}], "\n", 
+   RowBox[{"Print", "[", 
+    RowBox[{"\"\<Dim[probe] = \>\"", ",", " ", 
+     RowBox[{"Dimensions", "[", "probe", "]"}]}], "]"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"titles", "=", 
+     RowBox[{"<<", "titles"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{"Print", "[", 
+    RowBox[{"\"\<Dim[titles] = \>\"", ",", 
+     RowBox[{"Dimensions", "[", "titles", "]"}]}], "]"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"people", "=", 
+     RowBox[{"<<", "peopleids"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{"Print", "[", 
+    RowBox[{"\"\<Dim[people] = \>\"", ",", 
+     RowBox[{"Dimensions", "[", "people", "]"}]}], "]"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"probescores", "=", 
+     RowBox[{"<<", "probescores"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{"Print", "[", 
+    RowBox[{"\"\<Dim[probescores] = \>\"", ",", 
+     RowBox[{"Dimensions", "[", "probescores", "]"}]}], "]"}]}]}]], "Input"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Dim[probe] = \"\>", "\[InvisibleSpace]", 
+   RowBox[{"{", "16938", "}"}]}],
+  SequenceForm["Dim[probe] = ", {16938}],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.437073837773612*^9, 3.4378624896506433`*^9, 
+  3.437876253968388*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Dim[titles] = \"\>", "\[InvisibleSpace]", 
+   RowBox[{"{", "17770", "}"}]}],
+  SequenceForm["Dim[titles] = ", {17770}],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.437073837773612*^9, 3.4378624896506433`*^9, 
+  3.437876254117195*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Dim[people] = \"\>", "\[InvisibleSpace]", 
+   RowBox[{"{", "480183", "}"}]}],
+  SequenceForm["Dim[people] = ", {480183}],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.437073837773612*^9, 3.4378624896506433`*^9, 
+  3.437876254975754*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Dim[probescores] = \"\>", "\[InvisibleSpace]", 
+   RowBox[{"{", "16938", "}"}]}],
+  SequenceForm["Dim[probescores] = ", {16938}],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.437073837773612*^9, 3.4378624896506433`*^9, 
+  3.43787626494825*^9}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"peoplefilenames", "=", 
+   RowBox[{"Table", "[", 
+    RowBox[{
+     RowBox[{"StringJoin", "[", 
+      RowBox[{"\"\<personfile\>\"", ",", 
+       RowBox[{"ToString", "[", 
+        RowBox[{"people", "[", 
+         RowBox[{"[", "i", "]"}], "]"}], "]"}]}], "]"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"i", ",", 
+       RowBox[{"Length", "[", "people", "]"}]}], "}"}]}], "]"}]}], 
+  ";"}]], "Input"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"reversepersontable", "=", 
+   RowBox[{"Table", "[", 
+    RowBox[{"0", ",", 
+     RowBox[{"{", "2649429", "}"}]}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"Do", "[", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"reversepersontable", "[", 
+     RowBox[{"[", 
+      RowBox[{"people", "[", 
+       RowBox[{"[", "i", "]"}], "]"}], "]"}], "]"}], "=", "i"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"i", ",", 
+     RowBox[{"Length", "[", "people", "]"}]}], "}"}]}], "]"}]}], "Input"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["The Functions", "Section",
+ CellChangeTimes->{{3.437071805540948*^9, 3.437071809314616*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"fastvarcompare", "[", 
+   RowBox[{"mavenfile1_", ",", "file2_"}], "]"}], ":=", "\[IndentingNewLine]",
+   
+  RowBox[{"{", "\[IndentingNewLine]", 
+   RowBox[{"(*", 
+    RowBox[{
+     RowBox[{"Print", "[", 
+      RowBox[{"\"\<The first file has \>\"", ",", " ", 
+       RowBox[{"Length", "[", 
+        RowBox[{"DeleteCases", "[", 
+         RowBox[{"mavenfile1", ",", "0"}], "]"}], "]"}], " ", ",", 
+       "\"\< entries and second file has \>\"", ",", " ", 
+       RowBox[{"Length", "[", "file2", "]"}], ",", " ", "\"\< entries.\>\""}],
+       "]"}], ";"}], "*)"}], "\[IndentingNewLine]", 
+   RowBox[{"(*", 
+    RowBox[{
+     RowBox[{"movies1", "=", 
+      RowBox[{"Table", "[", 
+       RowBox[{
+        RowBox[{"file1", "[", 
+         RowBox[{"[", 
+          RowBox[{"i", ",", "1"}], "]"}], "]"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"i", ",", 
+          RowBox[{"Length", "[", "file1", "]"}]}], "}"}]}], "]"}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"movies2", "=", 
+      RowBox[{"Table", "[", 
+       RowBox[{
+        RowBox[{"file2", "[", 
+         RowBox[{"[", 
+          RowBox[{"i", ",", "1"}], "]"}], "]"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"i", ",", 
+          RowBox[{"Length", "[", "file2", "]"}]}], "}"}]}], "]"}]}], ";"}], 
+    "*)"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"mavencommonscorevector", "=", 
+     RowBox[{"Table", "[", 
+      RowBox[{
+       RowBox[{"If", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"mavenfile1", "[", 
+           RowBox[{"[", 
+            RowBox[{"file2", "[", 
+             RowBox[{"[", 
+              RowBox[{"i", ",", "1"}], "]"}], "]"}], "]"}], "]"}], "\[Equal]",
+           "0"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"0", ",", "0"}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"mavenfile1", "[", 
+            RowBox[{"[", 
+             RowBox[{"file2", "[", 
+              RowBox[{"[", 
+               RowBox[{"i", ",", "1"}], "]"}], "]"}], "]"}], "]"}], ",", 
+           RowBox[{"file2", "[", 
+            RowBox[{"[", 
+             RowBox[{"i", ",", "2"}], "]"}], "]"}]}], "}"}]}], "]"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"i", ",", 
+         RowBox[{"Length", "[", "file2", "]"}]}], "}"}]}], "]"}]}], ";", 
+    "\[IndentingNewLine]", 
+    RowBox[{"mavencommonscorevector", "=", 
+     RowBox[{"DeleteCases", "[", 
+      RowBox[{"mavencommonscorevector", ",", 
+       RowBox[{"{", 
+        RowBox[{"0", ",", "0"}], "}"}]}], "]"}]}], ";", "\[IndentingNewLine]",
+     
+    RowBox[{"stepvariance2go", "[", "mavencommonscorevector", "]"}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{"(*", 
+    RowBox[{
+     RowBox[{"Print", "[", 
+      RowBox[{"\"\<There are \>\"", ",", " ", 
+       RowBox[{"Length", "[", "mavencommonscorevector", "]"}], ",", " ", 
+       "\"\< movies in the citizen file\>\""}], "]"}], ";"}], "*)"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{"(*", 
+    RowBox[{
+     RowBox[{"overlap", "=", 
+      RowBox[{
+       RowBox[{"Length", "[", "commons", "]"}], "/", 
+       RowBox[{"Min", "[", 
+        RowBox[{
+         RowBox[{"Length", "[", "movies1", "]"}], ",", 
+         RowBox[{"Length", "[", "movies2", "]"}]}], "]"}]}]}], ";"}], "*)"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{"(*", 
+    RowBox[{"stepvariance2", "[", 
+     RowBox[{
+     "movies1", ",", "movies2", ",", "mavenfile1", ",", "file2", ",", 
+      "commons"}], "]"}], "*)"}], "\[IndentingNewLine]", "}"}]}]], "Input",
+ CellChangeTimes->{{3.4366497452026043`*^9, 3.436649746199127*^9}, {
+   3.436649918705113*^9, 3.4366499481540613`*^9}, {3.436651179372225*^9, 
+   3.436651280907399*^9}, {3.4366517072098703`*^9, 3.436651734194242*^9}, {
+   3.4366517783060513`*^9, 3.4366517825552473`*^9}, {3.436651855442792*^9, 
+   3.436651861576313*^9}, {3.4366520645250483`*^9, 3.436652110183468*^9}, {
+   3.43665214750972*^9, 3.436652148039997*^9}, {3.436652280531824*^9, 
+   3.4366522841913757`*^9}, {3.436652397091217*^9, 3.436652400901689*^9}, {
+   3.4366528957895823`*^9, 3.436652934810872*^9}, {3.4366529654725313`*^9, 
+   3.436652966185665*^9}, {3.4366529993981524`*^9, 3.4366530334831457`*^9}, {
+   3.436653457949594*^9, 3.436653505158087*^9}, {3.4366535665950193`*^9, 
+   3.436653567179394*^9}, {3.436653838687603*^9, 3.436653861435577*^9}, {
+   3.436657702894372*^9, 3.4366577072540617`*^9}, 3.436658060057378*^9, {
+   3.436658160989889*^9, 3.436658186892091*^9}, {3.436922417823551*^9, 
+   3.436922493705978*^9}, {3.4369226343040323`*^9, 3.436922682664475*^9}, {
+   3.436923989653915*^9, 3.43692398994248*^9}, {3.437863073185935*^9, 
+   3.437863099858117*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"cfvc", "=", "\[IndentingNewLine]", 
+   RowBox[{"Compile", "[", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"mavenfile1", ",", "_Integer", ",", "1"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"file2", ",", "_Integer", ",", "2"}], "}"}]}], "}"}], ",", 
+     "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"mavencommonscorevector", "=", "\[IndentingNewLine]", 
+       RowBox[{"Table", "[", "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"If", "[", "\[IndentingNewLine]", 
+          RowBox[{
+           RowBox[{
+            RowBox[{"mavenfile1", "[", 
+             RowBox[{"[", 
+              RowBox[{"file2", "[", 
+               RowBox[{"[", 
+                RowBox[{"i", ",", "1"}], "]"}], "]"}], "]"}], "]"}], 
+            "\[Equal]", "0"}], ",", 
+           RowBox[{"{", 
+            RowBox[{"0", ",", "0"}], "}"}], ",", 
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{"mavenfile1", "[", 
+              RowBox[{"[", 
+               RowBox[{"file2", "[", 
+                RowBox[{"[", 
+                 RowBox[{"i", ",", "1"}], "]"}], "]"}], "]"}], "]"}], ",", 
+             RowBox[{"file2", "[", 
+              RowBox[{"[", 
+               RowBox[{"i", ",", "2"}], "]"}], "]"}]}], "}"}]}], 
+          "\[IndentingNewLine]", "]"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"i", ",", 
+           RowBox[{"Length", "[", "file2", "]"}]}], "}"}]}], 
+        "\[IndentingNewLine]", "]"}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"mavencommonscorevector", "=", 
+       RowBox[{"DeleteCases", "[", 
+        RowBox[{"mavencommonscorevector", ",", 
+         RowBox[{"{", 
+          RowBox[{"0", ",", "0"}], "}"}]}], "]"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"stepvariance2go", "[", "mavencommonscorevector", "]"}], 
+      ";"}]}], "\[IndentingNewLine]", 
+    RowBox[{"(*", 
+     RowBox[{
+      RowBox[{"Print", "[", 
+       RowBox[{"\"\<There are \>\"", ",", " ", 
+        RowBox[{"Length", "[", "mavencommonscorevector", "]"}], ",", " ", 
+        "\"\< movies in common.\>\""}], "]"}], ";"}], "*)"}], 
+    "\[IndentingNewLine]", "]"}]}], "\[IndentingNewLine]"}]], "Input",
+ CellChangeTimes->{{3.436919631041258*^9, 3.436919672155944*^9}, {
+  3.436919723939128*^9, 3.436919841440546*^9}, {3.4369199462732277`*^9, 
+  3.436919951723139*^9}, {3.43692255765406*^9, 3.4369225979245377`*^9}, {
+  3.4369227096864758`*^9, 3.436922741620307*^9}, {3.4369227727694607`*^9, 
+  3.4369228043314753`*^9}, {3.436922852333186*^9, 3.436922866591716*^9}, {
+  3.436923127150103*^9, 3.43692314518486*^9}, {3.436923273897382*^9, 
+  3.436923277782022*^9}, {3.436923566963179*^9, 3.436923583547207*^9}, {
+  3.437865934362508*^9, 3.43786594152078*^9}}],
+
+Cell[BoxData[
+ TagBox[
+  RowBox[{"CompiledFunction", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"mavenfile1", ",", "file2"}], "}"}], ",", 
+    RowBox[{
+     RowBox[{"mavencommonscorevector", "=", 
+      RowBox[{"Table", "[", 
+       RowBox[{
+        RowBox[{"If", "[", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"mavenfile1", "\[LeftDoubleBracket]", 
+            RowBox[{"file2", "\[LeftDoubleBracket]", 
+             RowBox[{"i", ",", "1"}], "\[RightDoubleBracket]"}], 
+            "\[RightDoubleBracket]"}], "\[Equal]", "0"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"0", ",", "0"}], "}"}], ",", 
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"mavenfile1", "\[LeftDoubleBracket]", 
+             RowBox[{"file2", "\[LeftDoubleBracket]", 
+              RowBox[{"i", ",", "1"}], "\[RightDoubleBracket]"}], 
+             "\[RightDoubleBracket]"}], ",", 
+            RowBox[{"file2", "\[LeftDoubleBracket]", 
+             RowBox[{"i", ",", "2"}], "\[RightDoubleBracket]"}]}], "}"}]}], 
+         "]"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"i", ",", 
+          RowBox[{"Length", "[", "file2", "]"}]}], "}"}]}], "]"}]}], ";", 
+     RowBox[{"mavencommonscorevector", "=", 
+      RowBox[{"DeleteCases", "[", 
+       RowBox[{"mavencommonscorevector", ",", 
+        RowBox[{"{", 
+         RowBox[{"0", ",", "0"}], "}"}]}], "]"}]}], ";", 
+     RowBox[{"stepvariance2go", "[", "mavencommonscorevector", "]"}], ";"}], 
+    ",", "\<\"-CompiledCode-\"\>"}], "]"}],
+  False,
+  Editable->False]], "Output",
+ CellChangeTimes->{3.437073862811242*^9, 3.437862867410038*^9, 
+  3.437865942927225*^9, 3.437876286760524*^9}]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"stepvariance2go", "[", "pairs_", "]"}], ":=", 
+  "\[IndentingNewLine]", 
+  RowBox[{"{", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"fivevector", "=", 
+     RowBox[{"Table", "[", 
+      RowBox[{
+       RowBox[{"{", "}"}], ",", 
+       RowBox[{"{", "5", "}"}]}], "]"}]}], ";", "\[IndentingNewLine]", 
+    RowBox[{"Do", "[", 
+     RowBox[{
+      RowBox[{"AppendTo", "[", 
+       RowBox[{
+        RowBox[{"fivevector", "[", 
+         RowBox[{"[", 
+          RowBox[{"pairs", "[", 
+           RowBox[{"[", 
+            RowBox[{"i", ",", "1"}], "]"}], "]"}], "]"}], "]"}], ",", 
+        RowBox[{"pairs", "[", 
+         RowBox[{"[", "i", "]"}], "]"}]}], "]"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"i", ",", 
+        RowBox[{"Length", "[", "pairs", "]"}]}], "}"}]}], "]"}], ";", 
+    "\[IndentingNewLine]", 
+    RowBox[{"fivemean", "=", 
+     RowBox[{"Table", "[", 
+      RowBox[{"0", ",", 
+       RowBox[{"{", "5", "}"}]}], "]"}]}], ";", "\[IndentingNewLine]", 
+    RowBox[{"Do", "[", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"fivemean", "[", 
+        RowBox[{"[", "i", "]"}], "]"}], "=", 
+       RowBox[{"If", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"fivevector", "[", 
+           RowBox[{"[", "i", "]"}], "]"}], "\[NotEqual]", 
+          RowBox[{"{", "}"}]}], ",", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{
+            RowBox[{
+             RowBox[{"Sum", "[", 
+              RowBox[{
+               RowBox[{"fivevector", "[", 
+                RowBox[{"[", 
+                 RowBox[{"i", ",", "j", ",", "2"}], "]"}], "]"}], ",", 
+               RowBox[{"{", 
+                RowBox[{"j", ",", 
+                 RowBox[{"Length", "[", 
+                  RowBox[{"fivevector", "[", 
+                   RowBox[{"[", "i", "]"}], "]"}], "]"}]}], "}"}]}], "]"}], 
+             "/", 
+             RowBox[{"Length", "[", 
+              RowBox[{"fivevector", "[", 
+               RowBox[{"[", "i", "]"}], "]"}], "]"}]}], "//", "N"}], ",", 
+           RowBox[{"Length", "[", 
+            RowBox[{"fivevector", "[", 
+             RowBox[{"[", "i", "]"}], "]"}], "]"}]}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"\"\<NaN\>\"", ",", "\"\<NaN\>\""}], "}"}]}], "]"}]}], ",", 
+      
+      RowBox[{"{", 
+       RowBox[{"i", ",", "5"}], "}"}]}], "]"}], ";", "\[IndentingNewLine]", 
+    RowBox[{"fivevariance", "=", 
+     RowBox[{"Table", "[", 
+      RowBox[{"0", ",", 
+       RowBox[{"{", "5", "}"}]}], "]"}]}], ";", "\[IndentingNewLine]", 
+    RowBox[{"Do", "[", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"fivevariance", "[", 
+        RowBox[{"[", "i", "]"}], "]"}], "=", 
+       RowBox[{"If", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"Length", "[", 
+           RowBox[{"fivevector", "[", 
+            RowBox[{"[", "i", "]"}], "]"}], "]"}], "\[GreaterEqual]", "2"}], 
+         ",", 
+         RowBox[{"Sqrt", "[", " ", 
+          RowBox[{
+           RowBox[{"Sum", "[", 
+            RowBox[{
+             RowBox[{
+              RowBox[{"(", 
+               RowBox[{
+                RowBox[{"fivevector", "[", 
+                 RowBox[{"[", 
+                  RowBox[{"i", ",", "j", ",", "2"}], "]"}], "]"}], "-", 
+                RowBox[{"fivemean", "[", 
+                 RowBox[{"[", 
+                  RowBox[{"i", ",", "1"}], "]"}], "]"}]}], ")"}], "^", "2"}], 
+             ",", 
+             RowBox[{"{", 
+              RowBox[{"j", ",", 
+               RowBox[{"Length", "[", 
+                RowBox[{"fivevector", "[", 
+                 RowBox[{"[", "i", "]"}], "]"}], "]"}]}], "}"}]}], "]"}], "/",
+            
+           RowBox[{"(", 
+            RowBox[{
+             RowBox[{"Length", "[", 
+              RowBox[{"fivevector", "[", 
+               RowBox[{"[", "i", "]"}], "]"}], "]"}], "-", "1"}], ")"}]}], 
+          "]"}], ",", "1.5"}], "]"}]}], ",", 
+      RowBox[{"{", 
+       RowBox[{"i", ",", "5"}], "}"}]}], "]"}]}], "\[IndentingNewLine]", 
+   "}"}]}]], "Input",
+ CellChangeTimes->{{3.436923439824586*^9, 3.4369234821933527`*^9}, {
+  3.4370626317277117`*^9, 3.4370626477098*^9}, {3.4370642974575377`*^9, 
+  3.437064300379491*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"getfile", "[", "personnumber_", "]"}], ":=", 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"{", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"aa", "=", 
+       RowBox[{"Get", "[", 
+        RowBox[{"peoplefilenames", "[", 
+         RowBox[{"[", "personnumber", "]"}], "]"}], "]"}]}], ";", 
+      "\[IndentingNewLine]", "aa"}], "\[IndentingNewLine]", "}"}], "[", 
+    RowBox[{"[", "1", "]"}], "]"}]}], "\[IndentingNewLine]"}]], "Input",
+ CellChangeTimes->{{3.409927312916519*^9, 3.409927324568513*^9}, {
+  3.4099275521009407`*^9, 3.4099276487990313`*^9}, {3.4099283694980593`*^9, 
+  3.409928371666381*^9}, {3.4099286233136787`*^9, 3.409928623497202*^9}, {
+  3.4099287936824408`*^9, 3.409928820404228*^9}, {3.409929083812346*^9, 
+  3.4099290845600758`*^9}, {3.437072142821506*^9, 3.437072143307785*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["The Run", "Section",
+ CellChangeTimes->{{3.437071599074892*^9, 3.437071601770803*^9}, {
+  3.437071826325706*^9, 3.437071827013583*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", 
+   RowBox[{"Specify", " ", "global", " ", "constants"}], "*)"}], 
+  "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"mavenno", "=", "225"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"overlaplowercutoff", "=", "0.4"}], ";"}], "\[IndentingNewLine]", 
+   
+   RowBox[{
+    RowBox[{"epsilon", "=", ".0001"}], ";"}], " ", 
+   RowBox[{"(*", 
+    RowBox[{
+    "To", " ", "prevent", " ", "divide", " ", "by", " ", "zero", " ", "when", 
+     " ", "calculating", " ", "variance"}], "*)"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"defaultvariance", "=", "1.5"}], ";"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{"Do", "[", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{
+       "SetDirectory", "[", 
+        "\"\</Users/brucesawhill/Desktop/NetFlixPrize/NetFlixMmaFiles/\
+TestFolder\>\"", "]"}], ";", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+       RowBox[{"(*", 
+        RowBox[{
+        "definitions", " ", "of", " ", "objects", " ", "and", " ", 
+         "constants"}], "*)"}], "\[IndentingNewLine]", 
+       RowBox[{"citmavmean", "=", 
+        RowBox[{"Table", "[", 
+         RowBox[{
+          RowBox[{"{", "}"}], ",", 
+          RowBox[{"{", "mavenno", "}"}]}], "]"}]}], ";", 
+       "\[IndentingNewLine]", 
+       RowBox[{"citmavvariance", "=", 
+        RowBox[{"Table", "[", 
+         RowBox[{"0", ",", 
+          RowBox[{"{", "mavenno", "}"}]}], "]"}]}], ";", 
+       "\[IndentingNewLine]", 
+       RowBox[{"scores", "=", 
+        RowBox[{"Table", "[", 
+         RowBox[{"0", ",", 
+          RowBox[{"{", "mavenno", "}"}]}], "]"}]}], ";", 
+       "\[IndentingNewLine]", 
+       RowBox[{"norm", "=", 
+        RowBox[{"Table", "[", 
+         RowBox[{"0", ",", 
+          RowBox[{"{", "mavenno", "}"}]}], "]"}]}], ";", 
+       "\[IndentingNewLine]", "\[IndentingNewLine]", 
+       RowBox[{"(*", 
+        RowBox[{
+        "Get", " ", "a", " ", "citizen", " ", "review", " ", "file", " ", 
+         "on", " ", "hot", " ", "standby"}], "*)"}], "\[IndentingNewLine]", 
+       RowBox[{"a", "=", 
+        RowBox[{"getfile", "[", "j", "]"}]}], ";", "\[IndentingNewLine]", 
+       "\[IndentingNewLine]", 
+       RowBox[{"(*", 
+        RowBox[{
+         RowBox[{
+         "Compute", " ", "and", " ", "store", " ", "the", " ", "tables", " ", 
+          "of", " ", "multiplicities"}], ",", " ", "means", ",", " ", 
+         RowBox[{
+         "and", " ", "variances", " ", "for", " ", "each", " ", "of", " ", 
+          "the", " ", "225", " ", 
+          RowBox[{"maven", "/", "citizen"}], " ", "pairs"}]}], "*)"}], 
+       "\[IndentingNewLine]", 
+       RowBox[{"Do", "[", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"cfvc", "[", 
+            RowBox[{
+             RowBox[{"mavenmoviematrix225", "[", 
+              RowBox[{"[", "i", "]"}], "]"}], ",", "a"}], "]"}], ";", 
+           "\[IndentingNewLine]", 
+           RowBox[{
+            RowBox[{"citmavmean", "[", 
+             RowBox[{"[", "i", "]"}], "]"}], "=", "fivemean"}], ";", 
+           "\[IndentingNewLine]", 
+           RowBox[{
+            RowBox[{"citmavvariance", "[", 
+             RowBox[{"[", "i", "]"}], "]"}], "=", "fivevariance"}], ";"}], 
+          "\[IndentingNewLine]", "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"i", ",", "1", ",", "mavenno"}], "}"}]}], "]"}], ";", 
+       "\[IndentingNewLine]", "\[IndentingNewLine]", 
+       RowBox[{"(*", 
+        RowBox[{
+        "Grind", " ", "the", " ", "stats", " ", "to", " ", "rank", " ", "the",
+          " ", "mavens", " ", "and", " ", "find", " ", "the", " ", "knesset", 
+         " ", "for", " ", "each", " ", "citizen"}], "*)"}], 
+       "\[IndentingNewLine]", 
+       RowBox[{"Do", "[", "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"{", "\[IndentingNewLine]", 
+          RowBox[{
+           RowBox[{
+            RowBox[{"norm", "[", 
+             RowBox[{"[", "m", "]"}], "]"}], "=", 
+            RowBox[{"Sum", "[", 
+             RowBox[{
+              RowBox[{"If", "[", 
+               RowBox[{
+                RowBox[{
+                 RowBox[{"citmavmean", "[", 
+                  RowBox[{"[", 
+                   RowBox[{"m", ",", "n", ",", "2"}], "]"}], "]"}], "==", 
+                 "\"\<NaN\>\""}], ",", "epsilon", ",", 
+                RowBox[{"citmavmean", "[", 
+                 RowBox[{"[", 
+                  RowBox[{"m", ",", "n", ",", "2"}], "]"}], "]"}]}], "]"}], 
+              ",", 
+              RowBox[{"{", 
+               RowBox[{"n", ",", "5"}], "}"}]}], "]"}]}], ";", 
+           "\[IndentingNewLine]", 
+           RowBox[{
+            RowBox[{"scores", "[", 
+             RowBox[{"[", "m", "]"}], "]"}], "=", 
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{"norm", "[", 
+               RowBox[{"[", "m", "]"}], "]"}], ",", 
+              RowBox[{
+               RowBox[{"Sum", "[", 
+                RowBox[{
+                 RowBox[{
+                  RowBox[{"If", "[", 
+                   RowBox[{
+                    RowBox[{
+                    RowBox[{"citmavmean", "[", 
+                    RowBox[{"[", 
+                    RowBox[{"m", ",", "n", ",", "2"}], "]"}], "]"}], "==", 
+                    "\"\<NaN\>\""}], ",", " ", "0", ",", " ", 
+                    RowBox[{"citmavmean", "[", 
+                    RowBox[{"[", 
+                    RowBox[{"m", ",", "n", ",", "2"}], "]"}], "]"}]}], "]"}], 
+                  " ", 
+                  RowBox[{"citmavvariance", "[", 
+                   RowBox[{"[", 
+                    RowBox[{"m", ",", "n"}], "]"}], "]"}]}], ",", 
+                 RowBox[{"{", 
+                  RowBox[{"n", ",", "5"}], "}"}]}], "]"}], "/", 
+               RowBox[{"norm", "[", 
+                RowBox[{"[", "m", "]"}], "]"}]}], ",", "m"}], "}"}]}], ";"}], 
+          "\[IndentingNewLine]", "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"m", ",", "mavenno"}], "}"}]}], "\[IndentingNewLine]", 
+        "]"}], ";", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+       RowBox[{"(*", 
+        RowBox[{
+         RowBox[{
+         "Check", " ", "to", " ", "see", " ", "if", " ", "the", " ", 
+          "overlap", " ", "is", " ", "sufficient", " ", "to", " ", "include", 
+          " ", "the", " ", "score"}], ",", " ", 
+         RowBox[{"then", " ", "rank", " ", "them"}]}], "*)"}], 
+       RowBox[{"scores", "=", 
+        RowBox[{"DeleteCases", "[", 
+         RowBox[{
+          RowBox[{"Table", "[", 
+           RowBox[{
+            RowBox[{"If", "[", 
+             RowBox[{
+              RowBox[{
+               RowBox[{
+                RowBox[{
+                 RowBox[{"scores", "[", 
+                  RowBox[{"[", 
+                   RowBox[{"i", ",", "1"}], "]"}], "]"}], "/", 
+                 RowBox[{"reviewspers", "[", 
+                  RowBox[{"[", 
+                   RowBox[{"j", ",", "2"}], "]"}], "]"}]}], "\[LessEqual]", 
+                "overlaplowercutoff"}], "&&", 
+               RowBox[{
+                RowBox[{
+                 RowBox[{"scores", "[", 
+                  RowBox[{"[", 
+                   RowBox[{"i", ",", "1"}], "]"}], "]"}], "/", 
+                 RowBox[{"mavens", "[", 
+                  RowBox[{"[", 
+                   RowBox[{
+                    RowBox[{"mavens225", "[", 
+                    RowBox[{"[", "i", "]"}], "]"}], ",", "2"}], "]"}], 
+                  "]"}]}], "\[LessEqual]", "overlaplowercutoff"}]}], ",", "0",
+               ",", 
+              RowBox[{"scores", "[", 
+               RowBox[{"[", "i", "]"}], "]"}]}], "]"}], ",", 
+            RowBox[{"{", 
+             RowBox[{"i", ",", "225"}], "}"}]}], "]"}], ",", "0"}], "]"}]}], 
+       ";", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+       RowBox[{"a1", "=", 
+        RowBox[{"If", "[", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"Length", "[", "scores", "]"}], "<", "25"}], ",", " ", 
+          RowBox[{"Sort", "[", 
+           RowBox[{"scores", ",", 
+            RowBox[{
+             RowBox[{
+              RowBox[{"#2", "[", 
+               RowBox[{"[", "2", "]"}], "]"}], ">", 
+              RowBox[{"#1", "[", 
+               RowBox[{"[", "2", "]"}], "]"}]}], "&"}]}], "]"}], ",", " ", 
+          RowBox[{"Take", "[", 
+           RowBox[{
+            RowBox[{"Sort", "[", 
+             RowBox[{"scores", ",", 
+              RowBox[{
+               RowBox[{
+                RowBox[{"#2", "[", 
+                 RowBox[{"[", "2", "]"}], "]"}], ">", 
+                RowBox[{"#1", "[", 
+                 RowBox[{"[", "2", "]"}], "]"}]}], "&"}]}], "]"}], ",", 
+            "25"}], "]"}]}], "]"}]}], ";", "\[IndentingNewLine]", 
+       "\[IndentingNewLine]", 
+       RowBox[{"(*", 
+        RowBox[{"Now", " ", "put", " ", "it", " ", "away"}], "*)"}], 
+       RowBox[{
+       "SetDirectory", "[", 
+        "\"\</Users/brucesawhill/Desktop/NetFlixPrize/NetFlixMmaFiles/\
+BulkStats\>\"", "]"}], ";", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+       RowBox[{"a2", "=", 
+        RowBox[{"Table", "[", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"j", ",", 
+            RowBox[{"a1", "[", 
+             RowBox[{"[", 
+              RowBox[{"i", ",", "3"}], "]"}], "]"}], ",", 
+            RowBox[{
+             RowBox[{"a1", "[", 
+              RowBox[{"[", 
+               RowBox[{"i", ",", "1"}], "]"}], "]"}], "/", 
+             RowBox[{"reviewspers", "[", 
+              RowBox[{"[", 
+               RowBox[{"j", ",", "2"}], "]"}], "]"}]}], ",", 
+            RowBox[{"a1", "[", 
+             RowBox[{"[", 
+              RowBox[{"i", ",", "2"}], "]"}], "]"}], ",", 
+            RowBox[{"citmavmean", "[", 
+             RowBox[{"[", 
+              RowBox[{"a1", "[", 
+               RowBox[{"[", 
+                RowBox[{"i", ",", "3"}], "]"}], "]"}], "]"}], "]"}]}], "}"}], 
+          ",", 
+          RowBox[{"{", 
+           RowBox[{"i", ",", 
+            RowBox[{"Length", "[", "a1", "]"}]}], "}"}]}], "]"}]}], ";", 
+       "\[IndentingNewLine]", 
+       RowBox[{"a2", ">>>", "fastknesset"}], ";", "\[IndentingNewLine]", 
+       RowBox[{"Clear", "[", 
+        RowBox[{
+        "a1", ",", "a2", ",", "scores", ",", "citmavmean", ",", 
+         "citmavvariance", ",", "norm", ",", "a"}], "]"}], ";", 
+       "\[IndentingNewLine]", 
+       RowBox[{"If", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"IntegerQ", "[", 
+           RowBox[{"j", "/", "100"}], "]"}], "\[Equal]", "True"}], ",", 
+         RowBox[{"Print", "[", "j", "]"}]}], "]"}], ";"}], 
+      "\[IndentingNewLine]", "\[IndentingNewLine]", "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"j", ",", "10001", ",", 
+       RowBox[{"Length", "[", "people", "]"}]}], "}"}]}], 
+    "\[IndentingNewLine]", "]"}], "\[IndentingNewLine]"}]}]], "Input",
+ CellChangeTimes->{{3.4370587998093977`*^9, 3.437058812532506*^9}, {
+   3.4370589082346773`*^9, 3.437058970766651*^9}, {3.43705908289147*^9, 
+   3.437059294309533*^9}, {3.437059391632766*^9, 3.437059418807581*^9}, {
+   3.437059458244566*^9, 3.4370595148189363`*^9}, {3.437059918000202*^9, 
+   3.4370600257914553`*^9}, {3.437060141678576*^9, 3.437060142043344*^9}, {
+   3.4370601941544933`*^9, 3.437060330536949*^9}, {3.4370603722732353`*^9, 
+   3.4370604091461563`*^9}, {3.437060687782072*^9, 3.437060754267592*^9}, {
+   3.4370607875903883`*^9, 3.437060936745187*^9}, {3.437060975764694*^9, 
+   3.437060993194263*^9}, {3.437061080385108*^9, 3.437061128380816*^9}, {
+   3.43706119442132*^9, 3.4370614001018353`*^9}, {3.437061556972919*^9, 
+   3.437061582779805*^9}, {3.4370617851938543`*^9, 3.437061797554789*^9}, {
+   3.437061968896484*^9, 3.437061978187633*^9}, {3.437062022823936*^9, 
+   3.4370620439847937`*^9}, {3.437062702229076*^9, 3.43706270457656*^9}, {
+   3.437062738504395*^9, 3.43706274513949*^9}, {3.437062807502673*^9, 
+   3.437062824997672*^9}, {3.4370633255770493`*^9, 3.4370633269609833`*^9}, {
+   3.437063454197475*^9, 3.437063459045779*^9}, {3.437063549694557*^9, 
+   3.4370635537290382`*^9}, {3.4370636323033743`*^9, 
+   3.4370636561116657`*^9}, {3.437063753516335*^9, 3.437063759399109*^9}, {
+   3.437063893822209*^9, 3.437063933685526*^9}, {3.437064144442047*^9, 
+   3.437064145063149*^9}, {3.437064176002331*^9, 3.437064193575655*^9}, {
+   3.43706432678693*^9, 3.437064334858595*^9}, {3.4370645013558683`*^9, 
+   3.43706451832058*^9}, {3.4370645746459513`*^9, 3.4370645763707047`*^9}, {
+   3.437064644482955*^9, 3.437064649305142*^9}, 3.4370647320380087`*^9, {
+   3.437064770371542*^9, 3.43706479535612*^9}, {3.437064880547352*^9, 
+   3.437064892251136*^9}, {3.4370649810922623`*^9, 3.437064983376292*^9}, {
+   3.437065177143093*^9, 3.437065226628078*^9}, {3.437065267436042*^9, 
+   3.4370652716107388`*^9}, {3.4370653162088537`*^9, 3.437065320018532*^9}, {
+   3.437065495428503*^9, 3.437065498325788*^9}, {3.4370656418996*^9, 
+   3.4370656447591143`*^9}, {3.4370658989591503`*^9, 3.437065919493699*^9}, {
+   3.437066555603962*^9, 3.437066591585341*^9}, {3.437066656450797*^9, 
+   3.437066663595269*^9}, {3.437067431600542*^9, 3.437067479046279*^9}, {
+   3.437067509435113*^9, 3.437067571273295*^9}, {3.43706764274487*^9, 
+   3.4370676908417253`*^9}, {3.437067760104995*^9, 3.437067763175956*^9}, {
+   3.437071246809791*^9, 3.437071277114369*^9}, {3.437071372800951*^9, 
+   3.4370713970246153`*^9}, {3.43707197630724*^9, 3.437071987756242*^9}, {
+   3.4370722912449207`*^9, 3.437072292544539*^9}, {3.43707318941162*^9, 
+   3.4370732472057133`*^9}, {3.437073884074946*^9, 3.437073888310398*^9}, {
+   3.437073921097913*^9, 3.4370739315625477`*^9}, {3.437073985612607*^9, 
+   3.437073990320908*^9}, {3.437862177076952*^9, 3.437862184935989*^9}, {
+   3.437862397498703*^9, 3.437862422642034*^9}, {3.437862628500572*^9, 
+   3.437862632549728*^9}, {3.437863321059044*^9, 3.437863330607045*^9}, {
+   3.437864726064927*^9, 3.437864733799273*^9}, {3.437866112813266*^9, 
+   3.4378661187983923`*^9}, {3.437866221038913*^9, 3.437866222222878*^9}, {
+   3.4378763091253347`*^9, 3.437876350422174*^9}, {3.43787643618279*^9, 
+   3.437876443743499*^9}, {3.43787660713027*^9, 3.437876617583378*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+  "SetDirectory", "[", 
+   "\"\</Users/brucesawhill/Desktop/NetFlixPrize/NetFlixMmaFiles/BulkStats\>\"\
+", "]"}], ";"}]], "Input",
+ CellChangeTimes->{{3.437874893198724*^9, 3.437874911390361*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"rfk", "=", 
+  RowBox[{"OpenRead", "[", "\"\<fastknesset\>\"", "]"}]}]], "Input",
+ CellChangeTimes->{{3.437837349467863*^9, 3.437837386452756*^9}, {
+  3.437864136830327*^9, 3.437864137340143*^9}, {3.438096790328889*^9, 
+  3.438096794057152*^9}}],
+
+Cell[BoxData[
+ RowBox[{"InputStream", "[", 
+  RowBox[{"\<\"fastknesset\"\>", ",", "470414"}], "]"}]], "Output",
+ CellChangeTimes->{{3.437837356510972*^9, 3.437837387123011*^9}, 
+   3.437837524938546*^9, 3.437837581304631*^9, 3.437839458961784*^9, 
+   3.437839601125264*^9, 3.437839730350093*^9, 3.437839832133222*^9, 
+   3.437840789633938*^9, 3.437841392227283*^9, 3.437864142634344*^9, 
+   3.437864234029952*^9, 3.4378642707721977`*^9, 3.437864763234291*^9, 
+   3.437864915392687*^9, 3.4378660174405117`*^9, 3.437870392958084*^9, 
+   3.437874805644568*^9, {3.437874899130849*^9, 3.437874914513809*^9}, 
+   3.438096802978672*^9, 3.438097108502161*^9, 3.438097159248332*^9, 
+   3.4380972250955048`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"\[IndentingNewLine]", 
+  RowBox[{"knetable", "=", 
+   RowBox[{"Timing", "[", 
+    RowBox[{"Do", "[", 
+     RowBox[{
+      RowBox[{"Read", "[", "rfk", "]"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"i", ",", "1000"}], "}"}]}], "]"}], "]"}]}]}]], "Input",
+ CellChangeTimes->{{3.437837390950522*^9, 3.437837393289488*^9}, {
+   3.437839464798264*^9, 3.437839496657482*^9}, {3.437839595019985*^9, 
+   3.437839595192568*^9}, {3.437839714266881*^9, 3.437839714551495*^9}, {
+   3.437839827626194*^9, 3.437839828623616*^9}, {3.4378407930620947`*^9, 
+   3.437840793459714*^9}, {3.437841387483412*^9, 3.437841387886313*^9}, {
+   3.437864147156249*^9, 3.43786414750358*^9}, {3.437864205578506*^9, 
+   3.437864206276264*^9}, {3.437864242539771*^9, 3.437864261837462*^9}, {
+   3.4378647673514843`*^9, 3.437864767667294*^9}, {3.4378703423918943`*^9, 
+   3.437870389730197*^9}, 3.437874598087825*^9, 3.43787479932233*^9, {
+   3.437874833930768*^9, 3.4378748479530153`*^9}, {3.438096811010769*^9, 
+   3.43809681132097*^9}, {3.43809709076512*^9, 3.438097092637978*^9}, {
+   3.43809712967747*^9, 3.4380971864363203`*^9}, 3.438097228473158*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"0.9207449999812525`", ",", "Null"}], "}"}]], "Output",
+ CellChangeTimes->{{3.4380971745744553`*^9, 3.438097198380829*^9}, 
+   3.438097230125448*^9}]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{"knetable", "=", 
+  RowBox[{"Read", "[", "rfk", "]"}]}]], "Input",
+ CellChangeTimes->{{3.4380970964515343`*^9, 3.438097102937521*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Close", "[", "rfk", "]"}], ";"}]], "Input",
+ CellChangeTimes->{{3.437837390950522*^9, 3.437837393289488*^9}, {
+   3.437839464798264*^9, 3.437839496657482*^9}, {3.437839595019985*^9, 
+   3.437839595192568*^9}, {3.437839714266881*^9, 3.437839714551495*^9}, {
+   3.437839827626194*^9, 3.437839828623616*^9}, {3.4378407930620947`*^9, 
+   3.437840793459714*^9}, {3.437841387483412*^9, 3.437841387886313*^9}, {
+   3.437864147156249*^9, 3.43786414750358*^9}, {3.437864205578506*^9, 
+   3.437864206276264*^9}, {3.437864242539771*^9, 3.437864261837462*^9}, {
+   3.4378647673514843`*^9, 3.437864767667294*^9}, {3.4378703423918943`*^9, 
+   3.437870389730197*^9}, 3.437874598087825*^9, 3.43787479932233*^9}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"knetable", "[", 
+  RowBox[{"[", 
+   RowBox[{"1", ",", "2"}], "]"}], "]"}]], "Input",
+ CellChangeTimes->{{3.4378731821361647`*^9, 3.4378731931613398`*^9}, {
+  3.438097242865478*^9, 3.438097254472666*^9}}],
+
+Cell[BoxData["80"], "Output",
+ CellChangeTimes->{{3.437873186163743*^9, 3.437873193790803*^9}, {
+  3.43809724358471*^9, 3.438097254889477*^9}}]
+}, Open  ]],
+
+Cell[BoxData["knetable"], "Input",
+ CellChangeTimes->{{3.437864770423985*^9, 3.437864771372086*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Close", "[", "rfk", "]"}]], "Input",
+ CellChangeTimes->{{3.4378375151467323`*^9, 3.4378375187233963`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"General", "::", "\<\"openx\"\>"}], 
+  RowBox[{
+  ":", " "}], "\<\"\\!\\(InputStream[\\(\\(\\\"testfastknesset\\\", \
+2050\\)\\)]\\) is not open. \\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\", \
+ButtonStyle->\\\"Link\\\", ButtonFrame->None, \
+ButtonData:>\\\"paclet:ref/message/General/openx\\\", ButtonNote -> \
+\\\"General::openx\\\"]\\)\"\>"}]], "Message", "MSG",
+ CellChangeTimes->{3.437866217037879*^9}],
+
+Cell[BoxData[
+ RowBox[{"Close", "[", 
+  RowBox[{"InputStream", "[", 
+   RowBox[{"\<\"testfastknesset\"\>", ",", "2050"}], "]"}], "]"}]], "Output",
+ CellChangeTimes->{
+  3.43783760948216*^9, 3.4378395986505003`*^9, {3.437839708865429*^9, 
+   3.437839725414628*^9}, 3.43783978901825*^9, 3.4378407870633698`*^9, 
+   3.43784138446067*^9, 3.43786415368157*^9, 3.4378642675717573`*^9, 
+   3.437864746509589*^9, 3.437864897516898*^9, 3.4378659991753597`*^9, 
+   3.437866134429433*^9, 3.437866217049403*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"MemoryInUse", "[", "]"}]], "Input",
+ CellChangeTimes->{{3.4382645282074947`*^9, 3.438264536328947*^9}}],
+
+Cell[BoxData["532910064"], "Output",
+ CellChangeTimes->{3.438264543780612*^9}]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{1415, 1080},
+WindowMargins->{{53, Automatic}, {Automatic, 0}},
+ShowSelection->True,
+Magnification->1.25,
+FrontEndVersion->"6.0 for Mac OS X x86 (32-bit) (June 19, 2007)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[590, 23, 95, 1, 83, "Section"],
+Cell[CellGroupData[{
+Cell[710, 28, 722, 11, 53, "Input"],
+Cell[1435, 41, 215, 3, 33, "Output"],
+Cell[1653, 46, 1314, 21, 91, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[3004, 72, 3169, 77, 395, "Input"],
+Cell[CellGroupData[{
+Cell[6198, 153, 291, 7, 25, "Print"],
+Cell[6492, 162, 329, 8, 25, "Print"],
+Cell[6824, 172, 295, 7, 25, "Print"],
+Cell[7122, 181, 305, 7, 25, "Print"],
+Cell[7430, 190, 307, 7, 25, "Print"],
+Cell[7740, 199, 321, 8, 25, "Print"],
+Cell[8064, 209, 328, 8, 25, "Print"],
+Cell[8395, 219, 315, 8, 25, "Print"],
+Cell[8713, 229, 291, 7, 25, "Print"],
+Cell[9007, 238, 349, 8, 25, "Print"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[9405, 252, 311, 6, 53, "Input"],
+Cell[9719, 260, 184, 3, 33, "Output"],
+Cell[9906, 265, 506, 9, 53, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[10449, 279, 1363, 37, 205, "Input"],
+Cell[CellGroupData[{
+Cell[11837, 320, 287, 7, 25, "Print"],
+Cell[12127, 329, 289, 7, 25, "Print"],
+Cell[12419, 338, 291, 7, 25, "Print"],
+Cell[12713, 347, 298, 7, 25, "Print"]
+}, Open  ]]
+}, Open  ]],
+Cell[13038, 358, 431, 13, 33, "Input"],
+Cell[13472, 373, 507, 15, 53, "Input"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[14016, 393, 98, 1, 83, "Section"],
+Cell[14117, 396, 4631, 112, 243, "Input"],
+Cell[CellGroupData[{
+Cell[18773, 512, 2790, 64, 281, "Input"],
+Cell[21566, 578, 1656, 41, 72, "Output"]
+}, Open  ]],
+Cell[23237, 622, 4152, 114, 262, "Input"],
+Cell[27392, 738, 860, 18, 129, "Input"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[28289, 761, 141, 2, 83, "Section"],
+Cell[28433, 765, 14076, 313, 965, "Input"],
+Cell[42512, 1080, 231, 6, 33, "Input"],
+Cell[CellGroupData[{
+Cell[42768, 1090, 268, 5, 33, "Input"],
+Cell[43039, 1097, 701, 11, 33, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[43777, 1113, 1149, 20, 53, "Input"],
+Cell[44929, 1135, 188, 4, 33, "Output"]
+}, Open  ]],
+Cell[45132, 1142, 157, 3, 33, "Input"],
+Cell[45292, 1147, 730, 11, 33, "Input"],
+Cell[CellGroupData[{
+Cell[46047, 1162, 227, 5, 33, "Input"],
+Cell[46277, 1169, 143, 2, 33, "Output"]
+}, Open  ]],
+Cell[46435, 1174, 100, 1, 33, "Input"],
+Cell[CellGroupData[{
+Cell[46560, 1179, 130, 2, 33, "Input"],
+Cell[46693, 1183, 440, 9, 26, "Message"],
+Cell[47136, 1194, 499, 9, 33, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[47672, 1208, 127, 2, 33, "Input"],
+Cell[47802, 1212, 78, 1, 33, "Output"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)
